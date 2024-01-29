@@ -1,0 +1,23 @@
+name: check commit message lower case
+on:
+  push: 
+    branches: 
+      -main
+      -develop
+
+jobs:
+  check-commit-message:
+    runs-on: ubuntu:latest
+    steps:
+      -name: checkout repository
+       uses: actions/checkout@2
+
+      -name: check commit message case
+       run: |
+        for commit_msg in 
+        do
+        if [["commit_msg" =~ [A-Z] ]]; then
+          echo "error: commit message should be in lower case"
+          exit 1
+        fi
+        done

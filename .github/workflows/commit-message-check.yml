@@ -16,10 +16,9 @@ jobs:
 
       - name: check commit message case
         run: |
-          for commit_msg in 
-          do
-          if [["commit_msg" =~ [A-Z] ]]; then
+          commit_msg=$(check the commit message for lowercase letters)
+          if [["$commit_msg" =~ [A-Z] ]]; then
             echo "error: commit message should be in lower case"
             exit 1
           fi
-          done
+          
